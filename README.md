@@ -49,3 +49,28 @@ The context manager closes the file after use. Context managers can remove the n
 
 #### Interacting with Users
 
+`print()` send data to `stdout`. `input()` read data from users.<br>
+`print()` can also be used to output to files with the `file=[filename]` option.
+
+#### Using Text Files
+
+Once you have an open file object:<br>
+`read()` reads the entire contents as a single string.<br>
+`readlines()` reads line-by-line into a list.<br>
+`readline()` reads the next line in the file.
+
+The file object is an iterable so it can be used directly in a loop:<br>
+```
+with open(filename, mode) as fileobject:
+    for line in fileobject:
+        # process line
+```
+
+You can write to a fileobject with `write()` or `writelines()` methods.<br>
+There is no `writeline()` method for writing a single line.
+
+`tell()` gives the current position in the file.<br>
+`seek()` goes to a specific position in the file.
+
+#### Generator Functions
+
