@@ -74,3 +74,90 @@ There is no `writeline()` method for writing a single line.
 
 #### Generator Functions
 
+Generator functions use the `yield` keyword to return a value. Generator functions preserve their state after each run and `yield` the next value on the next invocation.
+```
+def odds(start=1):
+    '''return all odd numbers from start'''
+    if int(start) % 2 == 0: start = int(start) + 1 # make sure start is an odd number
+    while True:
+        yield start
+        start += 2
+```
+
+Generators become iterators so you can use them in `for` loops:
+```
+for n in odds():
+    if n > 7: break
+    else: print(n)
+```
+
+#### Lambda Functions
+
+Anonymous function blocks. Limited to a single expression.<br>
+`lambda <param1, param2, ...,paramN> : <expression>`
+
+`straight_line = lambda m,x,c: m*x+c`<br>
+`straight_line(2,4,-3)`
+
+#### Defining and Using Classes and Objects
+
+`__new()__`: Constructor<br>
+`__init()__`: Initializer<br>
+`__del()__`: Destructor
+
+Constructors are rarely used in Python unless inheriting from a built-in class.
+
+Method definitions have a reference to the calling instance as the first parameter. Typically called `self`.<br>
+```
+class MyClass(object):
+    instance_count = 0
+    def __init__(self, value):
+        self.__value = value
+        MyClass.instance_count += 1
+        print(f"instance No {MyClass.instance_count} created")
+    def aMethod(self, aValue):
+        self.__value *= aValue
+    def __str__(self):
+        return f"A MyClass instance with value: {self.__value}"
+    def __del__(self):
+        MyClass.instance_count -= 1
+```
+
+Double underscores in `value` indicate that it's meant to be private and should not be accessed directly.
+
+`__str__()` prints a formatted string when you pass the class to the `print()` method.
+
+`testCircle.py` uses properties within the `Circle2` class.<br>
+`radius = property(None, __setRadius)` creates a write-only attribute called `radius`. The `property()` function takes arguments for read, write, and delete. This code sets `None` as the read function but the (private) `__setRadius()` method as a write function.<br>
+`area()` is set as a read-only property using the `@property` decorator.
+
+#### Using and Creating Modules
+
+Common forms of `import`:
+```
+import aModule
+import aModule as anAlias
+import firstModule, secondModule, thirdModule...
+from aModule import anObject
+from aModule import anObject as anAlias
+from aModule import firstObject,secondObject, thirdObject...
+from aModule import *
+```
+
+The `from...` forms are used to only import specified names and avoid naming conflicts.
+
+Top-level code that runs every time it's imported should be avoided in modules, except for necessary variable initialization.<br>
+Code to be re-used should be packaged as functions or classes.
+
+To control visibility of module objects, prefix with `_` so the object won't be imported with any `from x import *` statements.<br>
+Explicity listing the names of the objects to be visibile in the `__all__` variable is the preferred method.
+
+#### Using and Creating Packages
+
+A package is just a folder with a file named `__init__.py`. All other files in the folder are the modules of the package.<br>
+`__init__.py` can be empty which will make all modules in the directory accessible. Or it can contain an `__all__` list to control which modules are visible.
+
+`import os.path` makes the entire `os` package visible along with the `path` submodule.<br>
+`import os.path as pth` only exposes `os.path`.
+
+The `bitwise` directory contains a sample package.
