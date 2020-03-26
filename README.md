@@ -161,3 +161,30 @@ A package is just a folder with a file named `__init__.py`. All other files in t
 `import os.path as pth` only exposes `os.path`.
 
 The `bitwise` directory contains a sample package.
+
+### Chapter 2 - Scripting with Python
+
+`os.getlogin()` get user login name.<br>
+`os.getuid()` get user id.<br>
+`pwd.getpwuid(os.getuid())` get information about user.
+
+`os.name` `sys.platform` `os.uname()` get information about the system. `os.name` is universally available.
+
+`shutil.get_terminal_size()` get number of lines and columns in current terminal.
+
+#### Obtaining Information About the Current Process
+
+`os.environ` information about the environment.<br>
+`os.getpid()` get the current process id.<br>
+`os.getcwd()` get the cwd.
+
+#### Managing Other Programs
+
+`subprocess` module with the `Popen` class is used for running other programs from within a script.
+```
+import subprocess as sub
+sub.call(['ls'])
+sub.call(['which', 'ls'])
+```
+
+#### Obtaining Information About Files (and Devices)
