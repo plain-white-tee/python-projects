@@ -181,7 +181,7 @@ The `bitwise` directory contains a sample package.
 #### Managing Other Programs
 
 `subprocess` module with the `Popen` class is used for running other programs from within a script.
-```
+```python
 import subprocess as sub
 sub.call(['ls'])
 sub.call(['which', 'ls'])
@@ -199,7 +199,7 @@ sub.call(['which', 'ls'])
 * `os.X_OK` file is executable
 
 Pattern for opening file, dealing with access errors, and processing:
-```
+```python
 try:
     myFile = open('myFile.txt')
 except PermissionError:
