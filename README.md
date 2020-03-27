@@ -188,3 +188,41 @@ sub.call(['which', 'ls'])
 ```
 
 #### Obtaining Information About Files (and Devices)
+
+`os.listdir('.')` list the contencts of `'.'`.<br>
+`time.localtime(timestring)` returns a tuple with time values.
+
+`os.access()` takes a filename and a flag to return:<br>
+-`os.F_OK` file exists
+-`os.R_OK` file is readable
+-`os.W_OK` file is writable
+-`os.X_OK` file is executable
+
+Pattern for opening file, dealing with access errors, and processing:
+```
+try:
+    myFile = open('myFile.txt')
+except PermissionError:
+    # test/modify file permissions
+else:
+    # process file
+finally:
+    # close file
+```
+
+#### Navigating and Manipulating the File system
+
+See Also: [Pathlib](https://docs.python.org/3/library/pathlib.html)
+
+[**os**](https://docs.python.org/3/library/os.html)<br>
+`os.mkdir()` create a directory<br>
+`os.makedirs()` make multiple nested directories<br>
+`os.chdir()` navigate to a new directory
+
+[**glob**](https://docs.python.org/3/library/glob.html)<br>
+`glob.glob('*')` list directory contents<br>
+`glob.glob('*.*')` files with an extension
+
+[**shutil**](https://docs.python.org/3/library/shutil.html)<br>
+`shutil.copy(source, destination)`<br>
+`shutil.copytree(sourcedir, destdir)`
