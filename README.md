@@ -193,10 +193,10 @@ sub.call(['which', 'ls'])
 `time.localtime(timestring)` returns a tuple with time values.
 
 `os.access()` takes a filename and a flag to return:<br>
--`os.F_OK` file exists
--`os.R_OK` file is readable
--`os.W_OK` file is writable
--`os.X_OK` file is executable
+* `os.F_OK` file exists
+* `os.R_OK` file is readable
+* `os.W_OK` file is writable
+* `os.X_OK` file is executable
 
 Pattern for opening file, dealing with access errors, and processing:
 ```
