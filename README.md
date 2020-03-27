@@ -14,14 +14,14 @@ https://docs.python.org/3/tutorial/datastructures.html?highlight=dictionary
 
 #### Structuring Your Program
 
-```
+```python
 if __name__ == "__main__":
     main()
 ```
 
 #### Handling Exceptions
 
-```
+```python
 try:
     A block of application code
 except <an error type> as <anExceptionObject>:
@@ -40,7 +40,7 @@ finally:
 A runtime context typically includes a temporary resource.
 
 You use a context manager with the `with` statement:<br>
-```
+```python
 with open(filename, mode) as contextName:
     process file
 ```
@@ -60,7 +60,7 @@ Once you have an open file object:<br>
 `readline()` reads the next line in the file.
 
 The file object is an iterable so it can be used directly in a loop:<br>
-```
+```python
 with open(filename, mode) as fileobject:
     for line in fileobject:
         # process line
@@ -75,7 +75,7 @@ There is no `writeline()` method for writing a single line.
 #### Generator Functions
 
 Generator functions use the `yield` keyword to return a value. Generator functions preserve their state after each run and `yield` the next value on the next invocation.
-```
+```python
 def odds(start=1):
     '''return all odd numbers from start'''
     if int(start) % 2 == 0: start = int(start) + 1 # make sure start is an odd number
@@ -85,7 +85,7 @@ def odds(start=1):
 ```
 
 Generators become iterators so you can use them in `for` loops:
-```
+```python
 for n in odds():
     if n > 7: break
     else: print(n)
@@ -108,7 +108,7 @@ Anonymous function blocks. Limited to a single expression.<br>
 Constructors are rarely used in Python unless inheriting from a built-in class.
 
 Method definitions have a reference to the calling instance as the first parameter. Typically called `self`.<br>
-```
+```python
 class MyClass(object):
     instance_count = 0
     def __init__(self, value):
@@ -133,8 +133,8 @@ Double underscores in `value` indicate that it's meant to be private and should 
 
 #### Using and Creating Modules
 
-Common forms of `import`:
-```
+Common forms of `import`:<br>
+```python
 import aModule
 import aModule as anAlias
 import firstModule, secondModule, thirdModule...
